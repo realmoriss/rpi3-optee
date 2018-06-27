@@ -1,0 +1,16 @@
+conf.mk: check for ARM32 support
+
+Signed-off-by: Istvan Telek <moriss@realmoriss.me>
+
+--- /core/arch/arm/plat-rpi3/conf.mk.old
++++ /core/arch/arm/plat-rpi3/conf.mk
+@@ -8,7 +8,9 @@ $(call force,CFG_PM_STUBS,y)
+ $(call force,CFG_SECURE_TIME_SOURCE_CNTPCT,y)
+ $(call force,CFG_WITH_ARM_TRUSTED_FW,y)
+ 
++ifeq ($(CFG_ARM32_core),y)
+ ta-targets = ta_arm32
++endif
+ 
+ ifeq ($(CFG_ARM64_core),y)
+ $(call force,CFG_WITH_LPAE,y)

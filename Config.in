@@ -1,0 +1,6 @@
+source "$BR2_EXTERNAL_RPI3_OPTEE_PATH/package/optee-client/Config.in"
+source "$BR2_EXTERNAL_RPI3_OPTEE_PATH/package/optee-test/Config.in"
+source "$BR2_EXTERNAL_RPI3_OPTEE_PATH/package/optee-examples/Config.in"
+source "$BR2_EXTERNAL_RPI3_OPTEE_PATH/package/optee-os/Config.in"
+source "$BR2_EXTERNAL_RPI3_OPTEE_PATH/package/arm-tf/Config.in"
+source "$BR2_EXTERNAL_RPI3_OPTEE_PATH/package/rpi3-head-bin/Config.in"

@@ -1,0 +1,14 @@
+config BR2_PACKAGE_ARM_TF
+	bool "arm-tf"
+	default "y"
+	select BR2_PACKAGE_OPTEE_OS
+	help
+	  https://github.com/linaro-swg/arm-trusted-firmware
+
+if BR2_PACKAGE_ARM_TF
+config BR2_PACKAGE_ARM_TF_SITE
+	string "ARM Trusted Firmware path"
+	default "git://github.com/linaro-swg/arm-trusted-firmware.git"
+	help
+	  The path to the source directory of ARM Trusted Firmware
+endif

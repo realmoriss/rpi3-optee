@@ -1,0 +1,4 @@
+config BR2_PACKAGE_RPI3_FIRMWARE
+	bool "rpi3-firmware"
+	help
+	  https://github.com/raspberrypi/firmware

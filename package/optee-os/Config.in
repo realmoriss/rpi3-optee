@@ -1,6 +1,5 @@
 config BR2_PACKAGE_OPTEE_OS
 	bool "optee-os"
-	default "y"
 	help
 	  https://github.com/OP-TEE/optee_os
 
@@ -13,13 +12,11 @@ config BR2_PACKAGE_OPTEE_OS_SITE
 	  
 config BR2_PACKAGE_OPTEE_OS_PLATFORM
 	string "OP-TEE OS platform"
-	default "rpi3"
 	help
 	  The name of the platform OP-TEE is compiled for
 	  
 config BR2_PACKAGE_OPTEE_OS_64BIT
 	bool "OP-TEE 64-bit support"
-	default "y"
 	help
 	  Compile OP-TEE with 64-bit TAs
 endif

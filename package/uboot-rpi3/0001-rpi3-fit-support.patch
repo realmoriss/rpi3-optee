@@ -1,0 +1,41 @@
+rpi.h: change default env file path, increase bootm size
+
+Signed-off-by: Istvan Telek <moriss@realmoriss.me>
+
+--- /include/configs/rpi.h.old
++++ /include/configs/rpi.h
+@@ -139,7 +139,7 @@
+ #define CONFIG_ENV_IS_IN_FAT
+ #define FAT_ENV_INTERFACE		"mmc"
+ #define FAT_ENV_DEVICE_AND_PART		"0:1"
+-#define FAT_ENV_FILE			"uboot.env"
++#define FAT_ENV_FILE			"uboot-env.bin"
+ #define CONFIG_FAT_WRITE
+ #define CONFIG_ENV_VARS_UBOOT_CONFIG
+ #define CONFIG_SYS_LOAD_ADDR		0x1000000
+
+--- /configs/rpi_3_defconfig.old
++++ /configs/rpi_3_defconfig
+@@ -9,3 +9,8 @@ CONFIG_SYS_PROMPT="U-Boot> "
+ CONFIG_CMD_GPIO=y
+ CONFIG_PHYS_TO_BUS=y
+ CONFIG_OF_LIBFDT=y
++CONFIG_FIT=y
++CONFIG_OF_CONTROL=y
++CONFIG_FIT_SIGNATURE=y
++CONFIG_FIT_RSA=y
++CONFIG_FIT_VERBOSE=y
+
+--- /common/bootm.c.old
++++ /common/bootm.c
+@@ -31,8 +31,8 @@
+ #include <image.h>
+ 
+ #ifndef CONFIG_SYS_BOOTM_LEN
+-/* use 8MByte as default max gunzip size */
+-#define CONFIG_SYS_BOOTM_LEN	0x800000
++/* use 32MByte as default max gunzip size */
++#define CONFIG_SYS_BOOTM_LEN (32 << 20)
+ #endif
+ 
+ #define IH_INITRD_ARCH IH_ARCH_DEFAULT

@@ -1,5 +1,0 @@
-config BR2_PACKAGE_RPI3_HEAD_BIN
-	bool "rpi3-head-bin"
-	default "y"
-	select BR2_PACKAGE_UBOOT
-	help

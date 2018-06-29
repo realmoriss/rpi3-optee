@@ -7,8 +7,7 @@ UBOOT_RPI3_DEPENDENCIES = linux optee-os
 
 UBOOT_EXT_DTB = $(BINARIES_DIR)/bcm2710-rpi-3-b.dtb
 
-UBOOT_RPI3_BUILD_PARAMS = CROSS_COMPILE=$(TARGET_CROSS) ARCH=arm \
-	EXT_DTB=$(UBOOT_EXT_DTB)
+UBOOT_RPI3_BUILD_PARAMS = CROSS_COMPILE=$(TARGET_CROSS) ARCH=arm
 
 UBOOT_RPI3_SIGNED_BUILD_PARAMS = CROSS_COMPILE=$(TARGET_CROSS) ARCH=arm \
 	EXT_DTB=$(@D)/signed.dtb
@@ -28,7 +27,7 @@ define UBOOT_RPI3_BUILD_CMDS
 	cp $(UBOOT_EXT_DTB) $(@D)/
 	cp $(BINARIES_DIR)/optee.bin $(@D)/
 	cp $(BINARIES_DIR)/Image $(@D)/
-	$(@D)/tools/mkimage -f $(@D)/rpi3_fit.its -K $(@D)/signed.dtb -k $(@D)/keys $(@D)/image.fit
+	$(@D)/tools/mkimage -f $(@D)/rpi3_fit.its -K $(@D)/signed.dtb -k $(@D)/keys -r $(@D)/image.fit
 	$(@D)/tools/fit_check_sign -f $(@D)/image.fit -k $(@D)/signed.dtb
 	$(MAKE) -C $(@D) $(UBOOT_RPI3_SIGNED_BUILD_PARAMS) all
 	cat $(@D)/head.bin $(@D)/u-boot.bin > $(@D)/u-boot-rpi.bin

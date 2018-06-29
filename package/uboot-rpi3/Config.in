@@ -8,14 +8,9 @@ config BR2_PACKAGE_UBOOT_RPI3_ENVIMAGE_SOURCE
 	string "Environment image source path"
 	help
 	  The path of the environment image source
-	  
+
 config BR2_PACKAGE_UBOOT_RPI3_ENVIMAGE_SIZE
 	string "Environment image size"
 	help
 	  The size of the environment image
-	  
-config BR2_PACKAGE_UBOOT_RPI3_CONFIG_FRAGMENT_FILES
-	string "Defconfig fragment files"
-	help
-	  Files which will be appended to defconfig
 endif

@@ -25,6 +25,7 @@ define UBOOT_RPI3_BUILD_CMDS
 	openssl genrsa -F4 -out $(@D)/keys/dev.key 2048
 	openssl req -batch -new -x509 -key $(@D)/keys/dev.key -out $(@D)/keys/dev.crt
 	cp $(UBOOT_EXT_DTB) $(@D)/signed.dtb
+	cp $(UBOOT_EXT_DTB) $(@D)/
 	cp $(BINARIES_DIR)/optee.bin $(@D)/
 	cp $(BINARIES_DIR)/Image $(@D)/
 	$(@D)/tools/mkimage -f $(@D)/rpi3_fit.its -K $(@D)/signed.dtb -k $(@D)/keys $(@D)/image.fit

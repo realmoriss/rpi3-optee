@@ -2,6 +2,6 @@ config BR2_PACKAGE_OPTEE_TEST
 	bool "optee-test"
 	select BR2_PACKAGE_OPTEE_CLIENT
 	select BR2_PACKAGE_OPENSSL
-	select BR2_PACKAGE_PYTHON_PYCRYPTO
+	select BR2_PACKAGE_HOST_PYTHON_PYCRYPTO
 	help
 	  http://github.org/OP-TEE/optee_test

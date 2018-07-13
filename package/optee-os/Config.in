@@ -1,6 +1,6 @@
 config BR2_PACKAGE_OPTEE_OS
 	bool "optee-os"
-	select BR2_PACKAGE_PYTHON_PYCRYPTO
+	select BR2_PACKAGE_HOST_PYTHON_PYCRYPTO
 	help
 	  https://github.com/OP-TEE/optee_os
 

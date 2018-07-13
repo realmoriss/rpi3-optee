@@ -1,14 +1,9 @@
 RPI3_FIRMWARE_VERSION = 1.20170215
-RPI3_FIRMWARE_SITE = "https://github.com/raspberrypi/firmware/archive"
-RPI3_FIRMWARE_SOURCE = $(RPI3_FIRMWARE_VERSION).zip
+RPI3_FIRMWARE_SITE = $(call github,raspberrypi,firmware,$(RPI3_FIRMWARE_VERSION))
 RPI3_FIRMWARE_INSTALL_IMAGES = YES
 
-define RPI3_FIRMWARE_EXTRACT_CMDS
-	unzip $(RPI3_FIRMWARE_DL_DIR)/$(RPI3_FIRMWARE_SOURCE) -d $(@D)
-endef
-
 define RPI3_FIRMWARE_INSTALL_IMAGES_CMDS
-	cp -r $(@D)/firmware-$(RPI3_FIRMWARE_VERSION)/boot $(BINARIES_DIR)/rpi-firmware
+	cp -r $(@D)/boot $(BINARIES_DIR)/rpi-firmware
 endef
 
 $(eval $(generic-package))

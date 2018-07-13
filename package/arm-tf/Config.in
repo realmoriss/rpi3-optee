@@ -1,6 +1,5 @@
 config BR2_PACKAGE_ARM_TF
 	bool "arm-tf"
-	default "y"
 	select BR2_PACKAGE_OPTEE_OS
 	help
 	  https://github.com/linaro-swg/arm-trusted-firmware

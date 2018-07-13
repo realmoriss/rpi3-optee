@@ -5,12 +5,6 @@ config BR2_PACKAGE_OPTEE_OS
 	  https://github.com/OP-TEE/optee_os
 
 if BR2_PACKAGE_OPTEE_OS
-config BR2_PACKAGE_OPTEE_OS_SITE
-	string "OP-TEE OS path"
-	default "git://github.com/OP-TEE/optee_os.git"
-	help
-	  The path to the source directory of OP-TEE os
-	  
 config BR2_PACKAGE_OPTEE_OS_PLATFORM
 	string "OP-TEE OS platform"
 	help

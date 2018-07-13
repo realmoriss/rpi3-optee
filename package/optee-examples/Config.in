@@ -1,14 +1,7 @@
 config BR2_PACKAGE_OPTEE_EXAMPLES
 	bool "optee-examples"
 	default "y"
+	select BR2_PACKAGE_PYTHON_PYCRYPTO
 	select BR2_PACKAGE_OPTEE_CLIENT
 	help
 	  https://github.com/linaro-swg/optee_examples
-
-if BR2_PACKAGE_OPTEE_EXAMPLES
-config BR2_PACKAGE_OPTEE_EXAMPLES_SITE
-	string "OP-TEE examples path"
-	default "git://github.com/linaro-swg/optee_examples.git"
-	help
-	  The path to the source directory of OP-TEE examples
-endif

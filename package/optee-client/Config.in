@@ -1,14 +1,5 @@
 config BR2_PACKAGE_OPTEE_CLIENT
 	bool "optee-client"
-	default "y"
 	select BR2_PACKAGE_OPTEE_OS
 	help
 	  https://github.com/OP-TEE/optee_client
-
-if BR2_PACKAGE_OPTEE_CLIENT
-config BR2_PACKAGE_OPTEE_CLIENT_SITE
-	string "OP-TEE client path"
-	default "git://github.com/OP-TEE/optee_client.git"
-	help
-	  The path to the source directory of OP-TEE client
-endif

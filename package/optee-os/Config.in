@@ -1,6 +1,6 @@
 config BR2_PACKAGE_OPTEE_OS
 	bool "optee-os"
-	selects BR2_PACKAGE_PYTHON_PYCRYPTO
+	select BR2_PACKAGE_PYTHON_PYCRYPTO
 	help
 	  https://github.com/OP-TEE/optee_os
 
@@ -9,7 +9,7 @@ config BR2_PACKAGE_OPTEE_OS_PLATFORM
 	string "OP-TEE OS platform"
 	help
 	  The name of the platform OP-TEE is compiled for
-	  
+
 config BR2_PACKAGE_OPTEE_OS_64BIT
 	bool "OP-TEE 64-bit support"
 	help

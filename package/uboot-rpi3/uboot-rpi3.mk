@@ -21,8 +21,8 @@ define UBOOT_RPI3_BUILD_CMDS
 	$(MAKE) -C $(@D) $(UBOOT_RPI3_BUILD_PARAMS) tools
 	$(@D)/tools/mkenvimage -s $(BR2_PACKAGE_UBOOT_RPI3_ENVIMAGE_SIZE) -o $(@D)/uboot-env.bin $(BR2_PACKAGE_UBOOT_RPI3_ENVIMAGE_SOURCE)
 	mkdir -p $(@D)/keys
-	openssl genrsa -F4 -out $(@D)/keys/dev.key 2048
-	openssl req -batch -new -x509 -key $(@D)/keys/dev.key -out $(@D)/keys/dev.crt
+	if [ ! -f "$(@D)/keys/dev.key" ]; then openssl genrsa -F4 -out "$(@D)/keys/dev.key" 2048; fi
+	if [ ! -f "$(@D)/keys/dev.key" ]; then openssl req -batch -new -x509 -key "$(@D)/keys/dev.key" -out "$(@D)/keys/dev.crt"; fi
 	cp $(UBOOT_EXT_DTB) $(@D)/signed.dtb
 	cp $(UBOOT_EXT_DTB) $(@D)/
 	cp $(BINARIES_DIR)/optee.bin $(@D)/

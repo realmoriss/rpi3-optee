@@ -1,0 +1,47 @@
+--- /core/arch/arm/mm/core_mmu_lpae.c.old
++++ /core/arch/arm/mm/core_mmu_lpae.c
+@@ -176,7 +176,7 @@
+ 		(CFG_LPAE_ADDR_SPACE_SIZE >> L1_XLAT_ADDRESS_SHIFT)
+ 
+ #ifndef MAX_XLAT_TABLES
+-#define MAX_XLAT_TABLES		5
++#define MAX_XLAT_TABLES		100
+ #endif
+ 
+ /*
+--- /core/arch/arm/plat-rpi3/main.c.old
++++ /core/arch/arm/plat-rpi3/main.c
+@@ -41,6 +41,10 @@
+ register_phys_mem(MEM_AREA_IO_NSEC,
+ 		  CONSOLE_UART_BASE, SERIAL8250_UART_REG_SIZE);
+ 
++register_phys_mem_ul(MEM_AREA_RAM_NSEC, MAP_KERNEL_START, MAP_KERNEL_SIZE);
++register_phys_mem_ul(MEM_AREA_RAM_NSEC, MAP_KERNEL_RAM_START, MAP_KERNEL_RAM_SIZE);
++
++
+ static void main_fiq(void)
+ {
+ 	panic();
+--- /core/arch/arm/plat-rpi3/platform_config.h.old
++++ /core/arch/arm/plat-rpi3/platform_config.h
+@@ -85,4 +85,10 @@
+ 
+ # define TA_RAM_SIZE		(16 * 1024 * 1024)
+ 
++#define MAP_KERNEL_START        0x00001000
++#define MAP_KERNEL_SIZE         (128 * 1024 * 1024)
++#define MAP_KERNEL_RAM_START    0x0a000000
++#define MAP_KERNEL_RAM_SIZE     (848 * 1024 * 1024)
++
++
+ #endif /* PLATFORM_CONFIG_H */
+--- /core/arch/arm/pta/sub.mk.old
++++ /core/arch/arm/pta/sub.mk
+@@ -11,6 +11,7 @@
+ srcs-$(CFG_TEE_BENCHMARK) += benchmark.c
+ srcs-$(CFG_SDP_PTA) += sdp_pta.c
+ srcs-$(CFG_SYSTEM_PTA) += system.c
++srcs-y += nw_memory_api.c
+ 
+ ifeq ($(CFG_SE_API),y)
+ srcs-$(CFG_SE_API_SELF_TEST) += se_api_self_tests.c

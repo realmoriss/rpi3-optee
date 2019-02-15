@@ -20,6 +20,12 @@ define OPTEE_OS_BUILD_CMDS
 	$(OPTEE_OS_BUILD_PARAMS)
 endef
 
+define OPTEE_OS_ADD_NW_MEM_API
+	cp -r $(OPTEE_OS_PKGDIR)/nw-mem-api/* $(@D)/core/arch/arm/pta/
+endef
+
+OPTEE_OS_PRE_PATCH_HOOKS += OPTEE_OS_ADD_NW_MEM_API
+
 define OPTEE_OS_INSTALL_STAGING_CMDS
 	rsync -a $(OPTEE_OS_OUT_SOURCE) $(STAGING_DIR)/ta_dev_kit
 endef
